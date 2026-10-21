@@ -1,0 +1,4 @@
+exclude:
+  - pages
+  - build.py
+  - README.md

@@ -1,0 +1,103 @@
+    <section class="page-head">
+      <div class="wrap">
+        <div class="eyebrow">Research</div>
+        <h1>What we work on</h1>
+        <p class="lead">Five areas, one approach: build careful computational models, test them against experiment where we can, and share the tools.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="topic" id="peptides">
+        <div class="topic-grid">
+          <div>
+            <h2>Peptide folding &amp; enhanced sampling</h2>
+            <p>Short peptides that fold into β-hairpins are simple scaffolds for designing catalysts. Whether they fold depends heavily on the two residues at the turn. We compute the free-energy landscapes of these turns systematically, residue by residue, and use the results to test long-standing design rules.</p>
+            <div class="project">
+              <h4>β-Hairpin turn control in tetrapeptides</h4>
+              <p class="small muted">A survey of Val-Xaa-Xaa-Leu tetrapeptides comparing D-proline and L-proline turns across all 20 residues, with replicate simulations and validation against a tryptophan-zipper hairpin with experimental data.</p>
+            </div>
+          </div>
+          <dl>
+            <dt>Methods</dt><dd>Molecular dynamics; OPES metadynamics and multithermal sampling; machine-learned collective variables (Deep-TICA)</dd>
+            <dt>Tools</dt><dd>GROMACS, PLUMED, mlcolvar, MDAnalysis, <a href="software.html#fes-explore">fes-explore</a></dd>
+            <dt>Earlier work</dt><dd>β-hairpin folding in decapeptides and histidine-containing peptide catalysts (2020–2022)</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="topic" id="biochar">
+        <div class="topic-grid">
+          <div>
+            <h2>Biochar &amp; PFAS</h2>
+            <p>Biochar, a charcoal-like material made from organic waste, can remove PFAS (“forever chemicals”) from water, but how well it works varies widely. We build molecular models of biochar from measurable properties and simulate how PFAS bind, to separate the effects of pore size, surface chemistry and water chemistry.</p>
+            <div class="project">
+              <h4>Biochar-Simulator</h4>
+              <p class="small muted">Generates biochar structures from carbon count, H/C and O/C ratios, defects, functional groups and pore geometry, with force-field files ready for GROMACS.</p>
+            </div>
+            <div class="project">
+              <h4>PFAS adsorption on biochar</h4>
+              <p class="small muted">Molecular dynamics of PFOA, PFOS and PFBS on biochar surfaces made at different production temperatures.</p>
+            </div>
+          </div>
+          <dl>
+            <dt>Methods</dt><dd>Molecular dynamics; enhanced sampling; surface modeling</dd>
+            <dt>Tools</dt><dd>GROMACS, RDKit, <a href="software.html#biochar">biochar</a>, <a href="software.html#biochar-pfas">biochar-pfas</a>, <a href="software.html#gromacs-mcp">gromacs-mcp</a></dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="topic" id="catalysis">
+        <div class="topic-grid">
+          <div>
+            <h2>Catalysis &amp; degradable polymers</h2>
+            <p>Thionolactones open a route to plastics that can break down. We use density functional theory to map how aluminum, yttrium and bismuth catalysts open caprolactone and thionocaprolactone rings, and why some catalysts work better than others. This work is a collaboration with colleagues in St. Thomas Chemistry.</p>
+          </div>
+          <dl>
+            <dt>Methods</dt><dd>Density functional theory; transition-state searches; intrinsic reaction coordinates</dd>
+            <dt>Tools</dt><dd>Gaussian, <a href="software.html#pes-builder">pes-builder</a></dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="topic" id="spectroscopy">
+        <div class="topic-grid">
+          <div>
+            <h2>Spectroscopy from first principles</h2>
+            <div class="project">
+              <h4>Mössbauer-DFT</h4>
+              <p class="small muted">Mössbauer spectroscopy is a key probe of iron oxidation and spin state. Mössbauer-DFT plans, runs and analyzes ORCA calculations and predicts ⁵⁷Fe isomer shifts and quadrupole splittings against a calibration set, with prediction intervals instead of single numbers.</p>
+            </div>
+            <div class="project">
+              <h4>Rashba splitting in CsPbBr₃</h4>
+              <p class="small muted">Spin-orbit coupling splits the electronic bands at perovskite surfaces. We are testing whether surface ligands control that splitting on all-inorganic CsPbBr₃.</p>
+            </div>
+          </div>
+          <dl>
+            <dt>Methods</dt><dd>Density functional theory; calibration and uncertainty estimates; spin-orbit band structures</dd>
+            <dt>Tools</dt><dd>ORCA, Quantum ESPRESSO, PyProcar, <a href="software.html#mossbauer">Mössbauer-DFT</a></dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="topic" id="interfaces">
+        <div class="topic-grid">
+          <div>
+            <h2>Interfaces &amp; phase transfer</h2>
+            <p>Phase-transfer catalysts move reactive ions between water and organic solvents. We study how ions cross that interface and how catalyst structure changes the free energy of transfer.</p>
+          </div>
+          <dl>
+            <dt>Methods</dt><dd>Molecular dynamics; empirical valence bond models; interface collective variables</dd>
+            <dt>Tools</dt><dd>GROMACS, PLUMED, <a href="software.html#ion-transfer-cv">ion-transfer-cv</a></dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="topic" id="past">
+        <h2>Earlier work</h2>
+        <ul class="plain">
+          <li><strong>Astrochemistry:</strong> reparametrized semi-empirical methods for the vibrational spectra of large interstellar molecules (NASA-funded, 2017–2020).</li>
+          <li><strong>Asymmetric catalysis:</strong> computational screening of organocatalysts for [2,3]-Wittig rearrangements.</li>
+          <li><strong>Vibrational probes:</strong> connecting molecular dynamics directly to infrared line shapes, with the Londergan group.</li>
+        </ul>
+      </section>
+    </div>

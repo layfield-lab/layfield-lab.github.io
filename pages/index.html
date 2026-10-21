@@ -1,0 +1,84 @@
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Computational chemistry · St. Paul, Minnesota</div>
+          <h1>We use simulation to explain molecular behavior that experiments alone can't resolve.</h1>
+          <p class="lead">The Layfield Lab combines quantum chemistry, molecular dynamics and enhanced sampling to study peptide folding, PFAS on biochar, degradable-polymer catalysts and spectroscopy. Undergraduates carry out the research and help build the open-source software it runs on.</p>
+          <div class="actions">
+            <a class="btn" href="research.html">See the research</a>
+            <a class="btn secondary" href="join.html">Join the lab</a>
+          </div>
+        </div>
+        <div class="panel" aria-label="Current projects">
+          <div class="panel-title">Current projects</div>
+          <ul class="rows">
+            <li><span class="name">β-Hairpin turn control in tetrapeptides</span><span class="tag">Active</span><span class="meta">OPES free-energy survey · GROMACS, PLUMED</span></li>
+            <li><span class="name">Biochar-Simulator</span><span class="tag">Active</span><span class="meta">Molecular models of biochar for MD · Python, RDKit</span></li>
+            <li><span class="name">PFAS adsorption on biochar</span><span class="tag">Active</span><span class="meta">Molecular dynamics of PFOA, PFOS and PFBS</span></li>
+            <li><span class="name">Ring-opening polymerization catalysts</span><span class="tag">Active</span><span class="meta">DFT mechanisms for Al, Y and Bi catalysts</span></li>
+            <li><span class="name">Mössbauer-DFT</span><span class="tag">Active</span><span class="meta">Calibrated ⁵⁷Fe Mössbauer predictions from ORCA</span></li>
+            <li><span class="name">Rashba splitting in CsPbBr₃</span><span class="tag quiet">Starting</span><span class="meta">Spin-orbit DFT of perovskite surfaces</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research areas</h2>
+          <a href="research.html">All research →</a>
+        </div>
+        <div class="areas">
+          <div class="area">
+            <h3>Peptide folding &amp; enhanced sampling</h3>
+            <div><p>What controls whether short peptides fold into β-hairpins, and how far can machine-learned collective variables take enhanced sampling?</p><div class="tags"><span class="tag quiet">OPES</span><span class="tag quiet">Metadynamics</span><span class="tag quiet">mlcolvar</span></div></div>
+          </div>
+          <div class="area">
+            <h3>Biochar &amp; PFAS</h3>
+            <div><p>Building realistic molecular models of biochar and using them to understand how “forever chemicals” stick to its surfaces.</p><div class="tags"><span class="tag quiet">Molecular dynamics</span><span class="tag quiet">OPLS-AA</span><span class="tag quiet">Open-source tools</span></div></div>
+          </div>
+          <div class="area">
+            <h3>Catalysis &amp; degradable polymers</h3>
+            <div><p>Mapping the mechanisms of metal catalysts that open caprolactone and thionocaprolactone rings, a route to degradable plastics.</p><div class="tags"><span class="tag quiet">DFT</span><span class="tag quiet">Reaction paths</span></div></div>
+          </div>
+          <div class="area">
+            <h3>Spectroscopy from first principles</h3>
+            <div><p>Predicting ⁵⁷Fe Mössbauer parameters with honest uncertainties, and spin-orbit effects on perovskite surfaces.</p><div class="tags"><span class="tag quiet">DFT</span><span class="tag quiet">Calibration</span><span class="tag quiet">Spin-orbit coupling</span></div></div>
+          </div>
+          <div class="area">
+            <h3>Interfaces &amp; phase transfer</h3>
+            <div><p>How ions cross the boundary between water and oil, and how phase-transfer catalysts change that process.</p><div class="tags"><span class="tag quiet">Molecular dynamics</span><span class="tag quiet">Collective variables</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2>Open-source software</h2>
+          <p>We publish the tools we build so others can reproduce and extend the work. Biochar-Simulator generates biochar structures ready for GROMACS; other packages set up PFAS simulations, analyze free-energy surfaces and draw reaction energy diagrams.</p>
+          <p><a href="software.html">Browse all lab software →</a></p>
+        </div>
+        <pre><code><span class="c"># Build a biochar model for molecular dynamics</span>
+pip install biochar
+<span class="c"># or</span>
+conda install -c conda-forge biochar</code></pre>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap split">
+        <div>
+          <h2>Research with undergraduates</h2>
+          <p>Every project in the lab is carried out by undergraduates. Students learn Python, quantum chemistry and molecular simulation through our training notebooks, run calculations on shared computing clusters, and present their results at St. Thomas and at regional and national meetings.</p>
+          <div class="actions"><a class="btn" href="join.html">How to join</a></div>
+        </div>
+        <ol class="steps">
+          <li><strong>Learn the tools.</strong> Work through Colab notebooks on Python, Gaussian output, trajectory analysis and enhanced sampling.</li>
+          <li><strong>Join a project.</strong> Reproduce a known result, then start your own calculations with weekly guidance.</li>
+          <li><strong>Share the work.</strong> Write it up like a journal article and present it at the UROP Inquiry poster session.</li>
+        </ol>
+      </div>
+    </section>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software · Layfield Lab</title>
+  <meta name="description" content="The Layfield Lab at the University of St. Thomas uses computational chemistry (quantum chemistry, molecular dynamics and enhanced sampling) with undergraduate researchers.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><strong>Layfield Lab</strong><span>Computational chemistry · University of St. Thomas</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html" aria-current="page">Software</a>
+        <a href="publications.html">Publications</a>
+        <a href="join.html">Join the lab</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <div class="eyebrow">Software</div>
+        <h1>Tools we build and share</h1>
+        <p class="lead">Lab software is open source under the MIT license and lives at <a href="https://github.com/layfield-lab">github.com/layfield-lab</a>. Issues and pull requests are welcome.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px">
+      <div class="wrap">
+        <div class="sw">
+          <article class="sw-item" id="biochar">
+            <h3>biochar</h3>
+            <p>Biochar-Simulator: builds realistic biochar structures from carbon count, H/C and O/C ratios, defects, functional groups and pore geometry, and writes GROMACS-ready OPLS-AA files.</p>
+            <pre><code>pip install biochar</code></pre>
+            <div class="links"><a href="https://github.com/layfield-lab/biochar">GitHub</a><a href="https://biochar-simulator.readthedocs.io/">Documentation</a><a href="https://pypi.org/project/biochar/">PyPI</a><a href="https://anaconda.org/conda-forge/biochar">conda-forge</a></div>
+          </article>
+          <article class="sw-item" id="biochar-pfas">
+            <h3>biochar-pfas</h3>
+            <p>Sets up molecular dynamics of PFOA, PFOS and PFBS on biochar surfaces built with Biochar-Simulator. It writes the files; you run them on your cluster.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/biochar-pfas">GitHub</a></div>
+          </article>
+          <article class="sw-item" id="mossbauer">
+            <h3>Mössbauer-DFT</h3>
+            <p>A command-line and browser app that plans, generates and analyzes ORCA calculations and predicts ⁵⁷Fe Mössbauer parameters against a calibration set, with prediction intervals.</p>
+            <div class="links"><span class="muted">Public installer coming soon. Contact us for access.</span></div>
+          </article>
+          <article class="sw-item" id="fes-explore">
+            <h3>fes-explore</h3>
+            <p>Finds minima on PLUMED two-dimensional free-energy surfaces, assigns trajectory frames to basins and extracts a trajectory for each basin.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/fes-explore">GitHub</a></div>
+          </article>
+          <article class="sw-item" id="pes-builder">
+            <h3>pes-builder</h3>
+            <p>Turns Gaussian outputs into potential energy surface diagrams, including reaction paths traced by intrinsic reaction coordinate calculations.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/pes-builder">GitHub</a></div>
+          </article>
+          <article class="sw-item" id="ion-transfer-cv">
+            <h3>ion-transfer-cv</h3>
+            <p>Collective variables for ion transfer across liquid/liquid interfaces (the Karnes–Benjamin water-finger and solvation coordinates) for GROMACS and PLUMED.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/ion-transfer-cv">GitHub</a></div>
+          </article>
+          <article class="sw-item" id="gromacs-mcp">
+            <h3>gromacs-mcp</h3>
+            <p>A Model Context Protocol server that lets AI coding assistants run GROMACS setup, equilibration, production and analysis steps.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/gromacs-mcp">GitHub</a></div>
+          </article>
+          <article class="sw-item" id="chem-lab-tutorials">
+            <h3>chem-lab-tutorials</h3>
+            <p>Colab notebooks for learning computational chemistry: Python for chemists, Gaussian output, trajectory analysis with MDAnalysis, PLUMED and OPES, and machine-learned collective variables.</p>
+            <div class="links"><a href="https://github.com/layfield-lab/chem-lab-tutorials">GitHub</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>Layfield Lab, Department of Chemistry, University of St. Thomas, St. Paul, Minnesota</div>
+      <div><a href="mailto:jlayfield@stthomas.edu">jlayfield@stthomas.edu</a> · <a href="https://github.com/layfield-lab">GitHub</a></div>
+    </div>
+  </footer>
+</body>
+</html>
