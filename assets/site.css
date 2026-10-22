@@ -142,3 +142,10 @@ details summary { cursor: pointer; font-weight: 600; }
   .wrap { padding: 0 16px; }
   .pubs li { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Group photo */
+.group-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.group-photo { margin: 0; }
+.group-photo img { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.group-photo figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+@media (max-width: 860px) { .group-grid { grid-template-columns: 1fr; gap: 20px; } }
