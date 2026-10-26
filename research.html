@@ -26,6 +26,15 @@
         <div class="eyebrow">Research</div>
         <h1>What we work on</h1>
         <p class="lead">Five areas, one approach: build careful computational models, test them against experiment where we can, and share the tools.</p>
+        <fieldset class="level-picker" id="level-picker">
+          <legend>Match the descriptions to the last chemistry course you finished</legend>
+          <div class="level-options">
+            <label><input type="radio" name="level" value="gen"> General chemistry</label>
+            <label><input type="radio" name="level" value="orgo" checked> Organic chemistry</label>
+            <label><input type="radio" name="level" value="biochem"> Biochemistry</label>
+            <label><input type="radio" name="level" value="pchem"> Physical chemistry</label>
+          </div>
+        </fieldset>
       </div>
     </section>
 
@@ -34,10 +43,16 @@
         <div class="topic-grid">
           <div>
             <h2>Peptide folding &amp; enhanced sampling</h2>
-            <p>Short peptides that fold into β-hairpins are simple scaffolds for designing catalysts. Whether they fold depends heavily on the two residues at the turn. We compute the free-energy landscapes of these turns systematically, residue by residue, and use the results to test long-standing design rules.</p>
+            <p class="lv lv-gen">Proteins are long chains of amino acids that fold into specific shapes, and a protein's shape decides what it does. We study very short chains, only four amino acids long, that can bend back on themselves into a hairpin. Whether a chain bends depends mostly on the two amino acids at the bend. We use computer simulations to measure how much each choice favors the hairpin, and we plan to use what we learn to design small peptides that act as catalysts.</p>
+            <p class="lv lv-orgo">Short peptides that fold into β-hairpins are simple scaffolds for designing catalysts. Whether they fold depends heavily on the two residues at the turn. One long-standing design rule is about stereochemistry: putting D-proline, the mirror image of natural L-proline, at the turn should favor the hairpin. We compute the free-energy landscapes of these turns systematically, residue by residue, and use the results to test that rule.</p>
+            <p class="lv lv-biochem">β-Hairpins are the smallest units of β-sheet structure, and the turn that joins the two strands largely decides whether one forms. Natural proteins are built from L-amino acids, but putting D-proline at the turn is expected to favor the type I′ and II′ turns that hairpins need (the Haque–Gellman rule). We test that rule for every amino acid at the next position in the turn, and we plan to use the most stable turns to build small peptides that act as catalysts.</p>
+            <p class="lv lv-pchem">Whether a short peptide forms a hairpin is a question of free energy: the hairpin population follows from the free-energy difference between folded and unfolded states. Folding is too slow to sample by brute force, so we use OPES, an enhanced-sampling method that adds a bias potential along the turn backbone dihedrals and then reweights the trajectory to recover unbiased Boltzmann populations. We are also testing whether machine-learned collective variables capture the slow degrees of freedom better than hand-picked angles.</p>
             <div class="project" id="hairpin">
               <h4>β-Hairpin turn control in tetrapeptides</h4>
-              <p class="small muted">A survey of Val-Xaa-Xaa-Leu tetrapeptides comparing D-proline and L-proline turns across all 20 residues, with replicate simulations and validation against a tryptophan-zipper hairpin with experimental data.</p>
+              <p class="small muted lv lv-gen">We try all 20 amino acids in one spot on the chain, each paired with two forms of proline that are mirror images of each other, and compare how often each chain forms a hairpin. We check the method on a longer, well-studied hairpin peptide that has been measured in the lab.</p>
+              <p class="small muted lv lv-orgo">A survey of Val-Xaa-Xaa-Leu tetrapeptides comparing D-proline and L-proline turns across all 20 residues, with replicate simulations and validation against a tryptophan-zipper hairpin with experimental data.</p>
+              <p class="small muted lv lv-biochem">Val–Pro–Xaa–Leu tetrapeptides with D- or L-proline at the turn and each of the 20 amino acids as Xaa. D- and L-alanine controls test whether the effect is specific to proline or holds for any D-amino acid, and TrpZip4, a tryptophan-zipper hairpin with experimental data, checks the approach.</p>
+              <p class="small muted lv lv-pchem">Two-CV OPES on the turn dihedrals (φ₂, ψ₃) for 40 tetrapeptides in explicit water, in replicate runs, with hairpin populations taken from reweighted free-energy surfaces. Follow-ups test OPES multithermal sampling, which covers a range of temperatures in one run, and Deep-TICA collective variables, which a neural network learns from the slowest motions in the data.</p>
             </div>
           </div>
           <dl>
@@ -52,14 +67,23 @@
         <div class="topic-grid">
           <div>
             <h2>Biochar &amp; PFAS</h2>
-            <p>Biochar, a charcoal-like material made from organic waste, can remove PFAS (“forever chemicals”) from water, but how well it works varies widely. We build molecular models of biochar from measurable properties and simulate how PFAS bind, to separate the effects of pore size, surface chemistry and water chemistry.</p>
+            <p class="lv lv-gen">PFAS, often called “forever chemicals,” are human-made compounds that barely break down and now turn up in drinking water. Biochar is a cheap, charcoal-like material made by heating plant waste, and it can soak some PFAS out of water, but how well it works varies a lot from study to study. We build models of biochar atom by atom and simulate PFAS molecules sticking to it, to find out which features of the biochar matter most.</p>
+            <p class="lv lv-orgo">Biochar, a charcoal-like material made from organic waste, can remove PFAS (“forever chemicals”) from water, but how well it works varies widely. PFAS such as PFOA pair a fluorinated, water-repelling tail with a charged carboxylate or sulfonate head, so they can stick to biochar's flat aromatic carbon and to its oxygen-containing functional groups in different ways. We build molecular models of biochar from measurable properties and simulate how PFAS bind, to separate the effects of pore size, surface chemistry and water chemistry.</p>
+            <p class="lv lv-biochem">PFAS stick to biochar through the same forces that hold a ligand in a protein's binding pocket: the hydrophobic effect, electrostatics and hydrogen bonding. Reported uptake varies widely because pore size, surface oxygen groups, pH and dissolved cations such as Ca²⁺ change together in experiments. We build biochar models from measurable composition and simulate PFOA, PFOS and PFBS binding so that each factor can be varied on its own.</p>
+            <p class="lv lv-pchem">Reported PFAS uptake on biochar varies widely because pore size, surface oxygen chemistry, pH and dissolved cations change together in experiments. We generate biochar models from measurable composition (H/C and O/C ratios, defects, functional groups and slit-pore widths) for different production temperatures, then use molecular dynamics with enhanced sampling to compute how strongly PFOA, PFOS and PFBS bind (their binding free energies) as each factor changes on its own.</p>
             <div class="project" id="biochar-simulator">
               <h4>Biochar-Simulator</h4>
-              <p class="small muted">Generates biochar structures from carbon count, H/C and O/C ratios, defects, functional groups and pore geometry, with force-field files ready for GROMACS.</p>
+              <p class="small muted lv lv-gen">Software we wrote that builds a model of biochar from a few numbers chemists can measure, such as how much hydrogen and oxygen it contains, so anyone can simulate it.</p>
+              <p class="small muted lv lv-orgo">Generates biochar structures from carbon count, H/C and O/C ratios, defects, functional groups and pore geometry, with force-field files ready for GROMACS.</p>
+              <p class="small muted lv lv-biochem">Builds biochar structures from measurable properties (H/C and O/C ratios, functional groups and pore size) and writes the files a molecular dynamics program needs, the same preparation a protein structure goes through before it is simulated. Available as <code>biochar</code> on PyPI and conda-forge.</p>
+              <p class="small muted lv lv-pchem">Builds biochar structures from carbon count, H/C and O/C ratios, defects, functional groups and pore geometry, assigns OPLS-AA atom types and charges, checks valence and composition, and writes GROMACS-ready topologies. Available as <code>biochar</code> on PyPI and conda-forge.</p>
             </div>
             <div class="project" id="pfas">
               <h4>PFAS adsorption on biochar</h4>
-              <p class="small muted">Molecular dynamics of PFOA, PFOS and PFBS on biochar surfaces made at different production temperatures.</p>
+              <p class="small muted lv lv-gen">Simulations of three common PFAS molecules on biochar made at different temperatures, to see which kinds of biochar hold on to them best.</p>
+              <p class="small muted lv lv-orgo">Molecular dynamics of PFOA, PFOS and PFBS on biochar surfaces made at different production temperatures.</p>
+              <p class="small muted lv lv-biochem">PFOA, PFOS and PFBS differ in chain length and in their charged head group (carboxylate or sulfonate). Simulating all three on biochar made at production temperatures from 300 to 700 °C separates the role of the hydrophobic tail from the role of the charged head.</p>
+              <p class="small muted lv lv-pchem">PFOA, PFOS and PFBS on biochar surfaces modeled for production temperatures from 300 to 700 °C, with slit pores of several widths. The PFOA parameters are validated on a graphene test system first; the production runs then compare binding across temperature, surface oxygen content and solution conditions.</p>
             </div>
           </div>
           <dl>
@@ -73,7 +97,10 @@
         <div class="topic-grid">
           <div>
             <h2>Catalysis &amp; degradable polymers</h2>
-            <p>Thionolactones open a route to plastics that can break down. We use density functional theory to map how aluminum, yttrium and bismuth catalysts open caprolactone and thionocaprolactone rings, and why some catalysts work better than others. This work is a collaboration with colleagues in St. Thomas Chemistry.</p>
+            <p class="lv lv-gen">Most plastics last for centuries. One way to make plastics that can break down is to build them from ring-shaped molecules that a metal catalyst opens up and links into long chains. We study caprolactone, a ring of seven atoms, and a version of it that contains sulfur. Using quantum chemistry, we compare catalysts built around aluminum, yttrium and bismuth to work out why some work better than others. This work is a collaboration with colleagues in St. Thomas Chemistry.</p>
+            <p class="lv lv-orgo">Ring-opening polymerization turns cyclic esters (lactones) into polyesters. Thionolactones, where the carbonyl oxygen is replaced by sulfur, open a route to plastics that can break down. We use density functional theory to map how aluminum, yttrium and bismuth catalysts open caprolactone and thionocaprolactone rings, step by step, and why some catalysts work better than others. This work is a collaboration with colleagues in St. Thomas Chemistry.</p>
+            <p class="lv lv-biochem">The chemistry has parallels with metalloenzymes that cut esters: a metal center binds and activates a carbonyl group so that it can be attacked. We map, step by step, how aluminum, yttrium and bismuth catalysts open caprolactone and its sulfur analog, thionocaprolactone, locate the transition states and compare the energy barriers. The aim is to explain why some metals work better and to point our experimental collaborators in St. Thomas Chemistry toward catalysts for degradable plastics.</p>
+            <p class="lv lv-pchem">We compute the reaction pathways for ring-opening polymerization of ε-caprolactone and ε-thionocaprolactone by Al, Y and Bi complexes: monomer binding to the metal, the first transition state and the ring-opened intermediates. Transition states are connected to their minima by intrinsic reaction coordinate calculations, using the ωB97X-D functional with def2 basis sets and implicit solvent. The aim is to explain the differences between metals and point our experimental collaborators in St. Thomas Chemistry toward better catalysts for degradable thiopolyesters.</p>
           </div>
           <dl>
             <dt>Methods</dt><dd>Density functional theory; transition-state searches; intrinsic reaction coordinates</dd>
@@ -88,11 +115,17 @@
             <h2>Spectroscopy from first principles</h2>
             <div class="project" id="mossbauer-dft">
               <h4>Mössbauer-DFT</h4>
-              <p class="small muted">Mössbauer spectroscopy is a key probe of iron oxidation and spin state. Mössbauer-DFT plans, runs and analyzes ORCA calculations and predicts ⁵⁷Fe isomer shifts and quadrupole splittings against a calibration set, with prediction intervals instead of single numbers.</p>
+              <p class="small muted lv lv-gen">Mössbauer spectroscopy uses gamma rays to tell chemists what state an iron atom is in, such as how many electrons it has given up. Our software predicts these spectra with quantum chemistry and reports a range of likely values instead of a single number, so you know how much to trust each prediction.</p>
+              <p class="small muted lv lv-orgo">Mössbauer spectroscopy is a key probe of iron oxidation and spin state. Mössbauer-DFT plans, runs and analyzes ORCA calculations and predicts ⁵⁷Fe isomer shifts and quadrupole splittings against a calibration set, with prediction intervals instead of single numbers.</p>
+              <p class="small muted lv lv-biochem">Iron sits at the active site of many proteins, including heme enzymes, and Mössbauer spectroscopy reports its oxidation and spin state. Mössbauer-DFT predicts ⁵⁷Fe Mössbauer parameters with quantum chemistry, calibrated against measured iron complexes and reported as a range of likely values, so a prediction can be compared directly with a measured spectrum.</p>
+              <p class="small muted lv lv-pchem">Predicts ⁵⁷Fe isomer shifts from the DFT electron density at the iron nucleus and quadrupole splittings from the electric field gradient, calibrated against a reference set of iron complexes and reported with prediction intervals. Mössbauer-DFT plans, runs and analyzes the ORCA calculations.</p>
             </div>
             <div class="project" id="rashba">
               <h4>Rashba splitting in CsPbBr₃</h4>
-              <p class="small muted">Spin-orbit coupling splits the electronic bands at perovskite surfaces. We are testing whether surface ligands control that splitting on all-inorganic CsPbBr₃.</p>
+              <p class="small muted lv lv-gen">Electrons have a property called spin. At the surface of some materials used in LEDs and solar cells, spin can split the energy levels that electrons occupy. We are testing whether the molecules attached to the surface of cesium lead bromide (CsPbBr₃) control that splitting.</p>
+              <p class="small muted lv lv-orgo">Spin-orbit coupling splits the electronic bands at perovskite surfaces. We are testing whether surface ligands control that splitting on all-inorganic CsPbBr₃.</p>
+              <p class="small muted lv lv-biochem">This project is materials chemistry rather than biochemistry. We are testing whether the molecules bound to the surface of CsPbBr₃, a material used in LEDs and solar cells, control how spin-orbit coupling splits its electronic energy levels.</p>
+              <p class="small muted lv lv-pchem">Rashba splitting appears when strong spin-orbit coupling meets broken inversion symmetry, as at a surface. We compute spin-orbit DFT band structures of CsPbBr₃ slabs to test whether the choice of surface ligand controls the size of the splitting.</p>
             </div>
           </div>
           <dl>
@@ -106,7 +139,10 @@
         <div class="topic-grid">
           <div>
             <h2>Interfaces &amp; phase transfer</h2>
-            <p>Phase-transfer catalysts move reactive ions between water and organic solvents. We study how ions cross that interface and how catalyst structure changes the free energy of transfer.</p>
+            <p class="lv lv-gen">Some reactions need two ingredients that don't mix, like salt water and oil. A phase-transfer catalyst carries charged particles (ions) across the boundary between them so the reaction can happen. We simulate ions crossing that boundary to learn how the catalyst's structure makes the trip easier.</p>
+            <p class="lv lv-orgo">Phase-transfer catalysts move reactive ions between water and organic solvents. We study how ions cross that interface and how catalyst structure, such as the length of the catalyst's alkyl chains, changes the free energy of transfer.</p>
+            <p class="lv lv-biochem">Moving an ion out of water costs free energy because the ion loses its shell of water molecules, the same cost that ion channels and transporters in membranes must overcome. Phase-transfer catalysts lower that cost so ions can be carried into an organic solvent. We simulate ions crossing a water/organic interface to learn how catalyst structure, such as alkyl chain length, changes the cost.</p>
+            <p class="lv lv-pchem">We compute free energies of ion transfer across water/organic interfaces with molecular dynamics and enhanced sampling along collective variables built for interfaces, and use empirical valence bond models where bonds form or break. The aim is to connect phase-transfer catalyst structure, such as alkyl chain length, to the transfer free energy.</p>
           </div>
           <dl>
             <dt>Methods</dt><dd>Molecular dynamics; empirical valence bond models; interface collective variables</dd>
@@ -124,6 +160,7 @@
         </ul>
       </section>
     </div>
+    <script src="assets/levels.js"></script>
 
   </main>
   <footer class="site-footer">
