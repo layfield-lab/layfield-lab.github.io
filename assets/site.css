@@ -165,3 +165,19 @@ html[data-level="gen"] .lv-gen,
 html[data-level="orgo"] .lv-orgo,
 html[data-level="biochem"] .lv-biochem,
 html[data-level="pchem"] .lv-pchem { display: block; }
+
+/* Glossary terms on the research page (assets/glossary.js) and the glossary page */
+a.term { color: inherit; text-decoration: underline dotted var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a.term:hover, a.term:focus-visible { color: var(--accent); }
+.glossary-hint { margin-top: 10px; }
+.glossary-tip { position: absolute; z-index: 20; max-width: 320px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); box-shadow: 0 6px 20px rgba(21, 24, 28, 0.14); font-size: 14px; line-height: 1.45; }
+.glossary-tip strong { display: block; margin-bottom: 2px; }
+.glossary-tip-more { display: block; margin-top: 6px; color: var(--accent); font-size: 13px; }
+.glossary-jump { max-width: 80ch; line-height: 1.9; }
+.glossary { padding-bottom: 48px; }
+.glossary-group { margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
+.glossary-entry { max-width: 72ch; padding: 20px 0 4px; scroll-margin-top: 16px; }
+.glossary-entry h3 { margin: 0 0 6px; }
+.glossary-entry:target h3 { color: var(--accent); }
+.glossary-short { font-weight: 600; }
+.glossary-learn { margin: 4px 0 0; padding-left: 18px; }
