@@ -1,11 +1,16 @@
-// Research-page reading level: shows the gen / orgo / adv version of each description.
+// Research-page reading level: shows the gen / orgo / biochem / pchem version of each description.
 // Order of precedence: ?level= in the URL, then the visitor's saved choice, then "orgo".
 (function () {
-  var LEVELS = ["gen", "orgo", "adv"];
+  var LEVELS = ["gen", "orgo", "biochem", "pchem"];
+  var ALIASES = { adv: "pchem" }; // the first draft had one combined advanced level
   var KEY = "layfield-lab-level";
   var picker = document.getElementById("level-picker");
   if (!picker) return;
 
+  function normalize(level) {
+    level = ALIASES[level] || level;
+    return LEVELS.indexOf(level) >= 0 ? level : null;
+  }
   function saved() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
@@ -18,9 +23,8 @@
     if (input) input.checked = true;
   }
 
-  var fromUrl = new URLSearchParams(location.search).get("level");
-  var start = LEVELS.indexOf(fromUrl) >= 0 ? fromUrl : saved();
-  apply(LEVELS.indexOf(start) >= 0 ? start : "orgo");
+  var fromUrl = normalize(new URLSearchParams(location.search).get("level"));
+  apply(fromUrl || normalize(saved()) || "orgo");
 
   picker.addEventListener("change", function (event) {
     var level = event.target.value;

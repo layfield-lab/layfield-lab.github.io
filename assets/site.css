@@ -162,4 +162,5 @@ details summary { cursor: pointer; font-weight: 600; }
 html:not([data-level]) .lv-orgo,
 html[data-level="gen"] .lv-gen,
 html[data-level="orgo"] .lv-orgo,
-html[data-level="adv"] .lv-adv { display: block; }
+html[data-level="biochem"] .lv-biochem,
+html[data-level="pchem"] .lv-pchem { display: block; }
