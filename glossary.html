@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary · Layfield Lab</title>
+  <meta name="description" content="The Layfield Lab at the University of St. Thomas uses computational chemistry (quantum chemistry, molecular dynamics and enhanced sampling) with undergraduate researchers.">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/glossary-tips.js" defer></script>
+  <script src="assets/glossary.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><strong>Layfield Lab</strong><span>Computational chemistry · University of St. Thomas</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="software.html">Software</a>
+        <a href="publications.html">Publications</a>
+        <a href="join.html">Join the lab</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <div class="eyebrow">Glossary</div>
+        <h1>Methods and tools, explained</h1>
+        <p class="lead">Short explanations of the methods and software named on the <a href="research.html">research page</a>. On that page, hover over or tab to a method for a one-line definition.</p>
+        <p class="glossary-jump small"><a href="#molecular-dynamics">Molecular dynamics</a> · <a href="#force-field">Force field</a> · <a href="#enhanced-sampling">Enhanced sampling</a> · <a href="#collective-variable">Collective variable</a> · <a href="#free-energy-surface">Free-energy surface</a> · <a href="#metadynamics">Metadynamics</a> · <a href="#opes">OPES</a> · <a href="#opes-multithermal">Multithermal sampling</a> · <a href="#reweighting">Reweighting</a> · <a href="#ml-cv">Machine-learned collective variables</a> · <a href="#evb">Empirical valence bond</a> · <a href="#surface-modeling">Surface modeling</a> · <a href="#dft">Density functional theory</a> · <a href="#transition-state">Transition state and transition-state searches</a> · <a href="#irc">Intrinsic reaction coordinate</a> · <a href="#spin-orbit">Spin-orbit coupling and band structures</a> · <a href="#calibration">Calibration and prediction intervals</a> · <a href="#gromacs">GROMACS</a> · <a href="#plumed">PLUMED</a> · <a href="#mlcolvar">mlcolvar</a> · <a href="#mdanalysis">MDAnalysis</a> · <a href="#rdkit">RDKit</a> · <a href="#gaussian">Gaussian</a> · <a href="#orca">ORCA</a> · <a href="#quantum-espresso">Quantum ESPRESSO</a> · <a href="#pyprocar">PyProcar</a></p>
+      </div>
+    </section>
+    <div class="wrap glossary">
+      <h2 class="glossary-group">Simulation methods and ideas</h2>
+      <article class="glossary-entry" id="molecular-dynamics">
+        <h3>Molecular dynamics (MD)</h3>
+        <p class="glossary-short">A simulation that moves every atom forward in tiny time steps using Newton&#x27;s laws, producing a movie of how molecules move and interact.</p>
+          <p>Molecular dynamics treats atoms as balls connected by springs. At each step the computer calculates the force on every atom from a <a href="#force-field">force field</a>, moves the atoms a tiny amount, and repeats. A typical time step is about two femtoseconds (2 × 10⁻¹⁵ s), so a simulation needs millions of steps to reach a microsecond.</p>
+          <p>MD shows how molecules move, fold and bind, usually with thousands of explicit water molecules around them. Its main limit is time: events that happen rarely, such as a peptide folding or a molecule leaving a surface, may never occur in a plain simulation. That is what <a href="#enhanced-sampling">enhanced sampling</a> is for. Standard MD also cannot form or break chemical bonds; for that we use <a href="#dft">quantum chemistry</a> or <a href="#evb">empirical valence bond</a> models.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#biochar">Biochar &amp; PFAS</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track2_MDAnalysis/mdanalysis_intro_student.ipynb">Training notebook: MD analysis with MDAnalysis</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="force-field">
+        <h3>Force field</h3>
+        <p class="glossary-short">The set of simple energy formulas and parameters (bond springs, angle bends, atomic charges, van der Waals attraction) that molecular dynamics uses to compute forces.</p>
+          <p>A force field writes a molecule's energy as a sum of simple terms: springs for bonds and angles, periodic terms for rotation about bonds, Coulomb's law between partial charges, and a Lennard-Jones term for van der Waals attraction and repulsion. Each atom type gets its own parameters, fitted to experiments and quantum calculations.</p>
+          <p>The quality of a simulation depends on the force field. Peptides and biochar need different ones (we use Amber-family force fields for peptides and OPLS-AA for biochar), and a new molecule such as a PFAS needs its parameters checked before production runs.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#biochar">Biochar &amp; PFAS</a></p>
+      </article>
+      <article class="glossary-entry" id="enhanced-sampling">
+        <h3>Enhanced sampling</h3>
+        <p class="glossary-short">Techniques that push a simulation over energy barriers so rare events happen in affordable time, then correct for the push to recover the true behavior.</p>
+          <p>Many important events, such as folding, binding and crossing an interface, require climbing an energy barrier, so they happen rarely on the timescale of a simulation. Enhanced-sampling methods add an extra bias energy that flattens those barriers, usually along a few chosen <a href="#collective-variable">collective variables</a>.</p>
+          <p>Because the bias changes the simulation, the results must be corrected afterward by <a href="#reweighting">reweighting</a>. The lab mainly uses <a href="#opes">OPES</a>, a modern relative of <a href="#metadynamics">metadynamics</a>.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#biochar">Biochar &amp; PFAS</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track3_PLUMED/plumed_tutorial.ipynb">Training notebook: PLUMED and OPES</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="collective-variable">
+        <h3>Collective variable (CV)</h3>
+        <p class="glossary-short">A few numbers, such as a distance or a dihedral angle, that summarize the important motion of a system; enhanced-sampling methods push along them.</p>
+          <p>A simulation of a peptide in water tracks tens of thousands of coordinates, but folding can often be described by just one or two, such as the backbone dihedral angles at the turn. Those summary coordinates are collective variables.</p>
+          <p>Choosing good CVs is the hard part of enhanced sampling: a bias along a CV that misses the slow motion barely helps. That is why the lab is testing <a href="#ml-cv">machine-learned collective variables</a>. For interfaces, the CVs describe where an ion sits relative to the boundary between water and the organic solvent.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track3_PLUMED/plumed_tutorial.ipynb">Training notebook: PLUMED and OPES</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="free-energy-surface">
+        <h3>Free-energy surface</h3>
+        <p class="glossary-short">A map of free energy along one or two collective variables: valleys are stable states, and the heights of the hills between them set how often the system switches.</p>
+          <p>A free-energy surface comes from how often a system visits each value of its collective variables: F = −k<sub>B</sub>T ln P, where P is the probability. A state the system visits often sits in a deep valley.</p>
+          <p>Comparing valleys gives populations, for example the fraction of time a peptide spends as a hairpin. Comparing a valley with the hill next to it gives the barrier that controls how fast the system changes.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#interfaces">Interfaces</a></p>
+      </article>
+      <article class="glossary-entry" id="metadynamics">
+        <h3>Metadynamics</h3>
+        <p class="glossary-short">An enhanced-sampling method that keeps adding small energy bumps where the system has already been, gradually filling valleys until it escapes to new states.</p>
+          <p>Metadynamics deposits small Gaussian hills of bias energy at the current value of the collective variables. Over time the hills fill the free-energy valleys, pushing the system to explore states it would rarely visit. The accumulated bias also gives an estimate of the free-energy surface.</p>
+          <p>Metadynamics introduced the idea of building a bias on the fly. <a href="#opes">OPES</a> keeps that idea but builds the bias differently.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p>
+      </article>
+      <article class="glossary-entry" id="opes">
+        <h3>OPES (on-the-fly probability enhanced sampling)</h3>
+        <p class="glossary-short">A newer relative of metadynamics that builds its bias from a running estimate of the probability distribution, so it converges quickly and its results are easy to reweight.</p>
+          <p>OPES, introduced by Invernizzi and Parrinello in 2020, estimates the probability distribution along the collective variables as the simulation runs and sets the bias so that the system samples a chosen target distribution, usually a flattened version of the real one. Because the bias settles to a nearly fixed value, it is straightforward to <a href="#reweighting">reweight</a> the simulation to recover unbiased populations.</p>
+          <p>The lab uses OPES with the peptide turn dihedrals as collective variables to compute hairpin free-energy surfaces for each amino acid. OPES is implemented in <a href="#plumed">PLUMED</a>.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track3_PLUMED/plumed_tutorial.ipynb">Training notebook: PLUMED and OPES</a></li><li><a href="https://doi.org/10.1021/acs.jpclett.0c00497">Invernizzi &amp; Parrinello (2020), J. Phys. Chem. Lett.</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="opes-multithermal">
+        <h3>Multithermal sampling (OPES multithermal)</h3>
+        <p class="glossary-short">An OPES variant that samples a whole range of temperatures in one simulation, so a single run gives results at every temperature in the range.</p>
+          <p>Instead of pushing along a geometric collective variable, multithermal OPES biases the potential energy so the system samples the energies it would visit across a range of temperatures. Hot temperatures help it cross barriers, and reweighting recovers the behavior at each temperature, including room temperature.</p>
+          <p>It is useful when good geometric collective variables are hard to find. The lab is piloting it for the tetrapeptides and has used it to validate the approach on a tryptophan-zipper hairpin.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track2_MDAnalysis/opes_multithermal_student.ipynb">Training notebook: OPES multithermal simulation of a tetrapeptide</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="reweighting">
+        <h3>Reweighting</h3>
+        <p class="glossary-short">Recovering unbiased averages from a biased simulation by giving each frame a weight that undoes the bias.</p>
+          <p>A biased simulation over-visits some states on purpose. If each saved frame is weighted by e<sup>V/k<sub>B</sub>T</sup>, where V is the bias energy at that frame, averages over the weighted frames match an unbiased simulation.</p>
+          <p>Reweighting only works if the biased run still visited the relevant states often enough. A common check is the effective sample size, which reports how many frames effectively carry the weight.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track2_MDAnalysis/opes_multithermal_student.ipynb">Training notebook: OPES multithermal simulation of a tetrapeptide</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="ml-cv">
+        <h3>Machine-learned collective variables (Deep-TICA)</h3>
+        <p class="glossary-short">Collective variables found by a neural network trained on simulation data; Deep-TICA looks for the slowest motions, which are usually the ones worth biasing.</p>
+          <p>Hand-picked collective variables can miss the motion that actually limits sampling. Deep-TICA, introduced by Bonati, Piccini and Parrinello in 2021, trains a neural network on simulation data to find combinations of many simple descriptors that change most slowly over time. Those slow modes then serve as collective variables for enhanced sampling.</p>
+          <p>The lab is testing whether Deep-TICA variables sample the slow backbone motions of the tetrapeptides better than the turn dihedrals alone. The models are built with <a href="#mlcolvar">mlcolvar</a>.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track3_PLUMED/mlcolvar_deeplda_deeptica.ipynb">Training notebook: Deep-LDA and Deep-TICA with mlcolvar</a></li><li><a href="https://doi.org/10.1073/pnas.2113533118">Bonati, Piccini &amp; Parrinello (2021), PNAS</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="evb">
+        <h3>Empirical valence bond (EVB)</h3>
+        <p class="glossary-short">A model that mixes two or more force-field descriptions of a system (for example, before and after a bond breaks) so a simulation can form and break bonds cheaply.</p>
+          <p>Ordinary force fields keep every bond intact. An EVB model describes each bonding arrangement, such as reactant and product, with its own force field and mixes them through a coupling term, so the system can move smoothly from one arrangement to the other.</p>
+          <p>EVB is much cheaper than quantum chemistry, so it can be used in long simulations with thousands of solvent molecules.</p>
+        <p class="small muted">Used in: <a href="research.html#interfaces">Interfaces</a></p>
+      </article>
+      <article class="glossary-entry" id="surface-modeling">
+        <h3>Surface modeling</h3>
+        <p class="glossary-short">Building atomistic models of a material&#x27;s surface, such as a biochar sheet with pores and oxygen groups, that a simulation can use.</p>
+          <p>Real biochar is disordered, so there is no single crystal structure to start from. The lab builds model surfaces from properties that can be measured, such as H/C and O/C ratios, functional groups and pore widths, using <a href="software.html#biochar">Biochar-Simulator</a>.</p>
+          <p>Building a family of surfaces lets us change one property at a time, such as oxygen content or pore size, and see how it affects PFAS binding.</p>
+        <p class="small muted">Used in: <a href="research.html#biochar">Biochar &amp; PFAS</a></p>
+      </article>
+      <h2 class="glossary-group">Quantum chemistry</h2>
+      <article class="glossary-entry" id="dft">
+        <h3>Density functional theory (DFT)</h3>
+        <p class="glossary-short">A quantum-mechanics method that computes a molecule&#x27;s energy and structure from its electron density; the workhorse of computational chemistry.</p>
+          <p>DFT solves an approximate form of the Schrödinger equation in which the energy is written as a function of the electron density. Unlike a force field, it describes electrons explicitly, so it can follow bonds forming and breaking, predict spectra, and handle metals.</p>
+          <p>The approximation lives in the choice of functional, and the accuracy also depends on the basis set used to describe the electrons. For the catalysis project we use the ωB97X-D functional with def2 basis sets and an implicit solvent model that treats the solvent as a continuous medium. DFT is far more expensive than molecular dynamics, so it is usually applied to a few hundred atoms at most.</p>
+        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a>, <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track1_Gaussian/gaussian_python_intro.ipynb">Training notebook: Python for Gaussian output</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="transition-state">
+        <h3>Transition state and transition-state searches</h3>
+        <p class="glossary-short">The highest-energy point on the lowest-energy path from reactants to products; its height above the reactants sets the reaction barrier.</p>
+          <p>A transition state is a saddle point on the potential energy surface: a maximum along the reaction path and a minimum in every other direction. A transition-state search uses an optimizer that climbs toward that saddle point instead of downhill.</p>
+          <p>A true transition state has exactly one imaginary vibrational frequency, the motion that carries it toward reactants or products. Comparing barrier heights for different catalysts shows which should react fastest.</p>
+        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a></p>
+      </article>
+      <article class="glossary-entry" id="irc">
+        <h3>Intrinsic reaction coordinate (IRC)</h3>
+        <p class="glossary-short">A calculation that slides downhill from a transition state in both directions to confirm which reactant and product it connects.</p>
+          <p>Finding a saddle point does not prove it belongs to the reaction you care about. An IRC calculation follows the steepest-descent path from the transition state toward both sides, ending at the minima it connects.</p>
+          <p>The frames along an IRC path also show how the atoms move during the reaction, and can be turned into an animation.</p>
+        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a></p>
+      </article>
+      <article class="glossary-entry" id="spin-orbit">
+        <h3>Spin-orbit coupling and band structures</h3>
+        <p class="glossary-short">Spin-orbit coupling links an electron&#x27;s spin to its motion near heavy atoms; in a crystal it can split the energy bands that a band structure plots.</p>
+          <p>A band structure shows the energies electrons can have in a crystal as a function of their momentum. Its shape determines whether a material conducts and what light it absorbs.</p>
+          <p>Near heavy atoms such as lead, an electron's spin couples to its orbital motion. When the structure also lacks inversion symmetry, as at a surface, this spin-orbit coupling can split each band into two with opposite spin, an effect called Rashba splitting. Calculating it requires DFT that includes spin-orbit coupling explicitly.</p>
+        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p>
+      </article>
+      <article class="glossary-entry" id="calibration">
+        <h3>Calibration and prediction intervals</h3>
+        <p class="glossary-short">Fitting computed values to measured ones for a reference set, so new predictions can be corrected and reported as a range the true value likely falls in.</p>
+          <p>Computed spectroscopic parameters are not directly comparable with experiment; for example, a Mössbauer isomer shift is computed from the electron density at the iron nucleus and must be related to measured shifts. Calibrating against a set of iron complexes with known values gives that relationship.</p>
+          <p>The scatter of the reference set around the calibration line also tells you how much to trust a new prediction. A prediction interval turns that scatter into a range, which is more honest than a single number.</p>
+        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p>
+      </article>
+      <h2 class="glossary-group">Software we use</h2>
+      <article class="glossary-entry" id="gromacs">
+        <h3>GROMACS</h3>
+        <p class="glossary-short">A fast, free molecular dynamics program that runs the lab&#x27;s peptide, biochar and interface simulations.</p>
+          <p>GROMACS is one of the most widely used open-source molecular dynamics engines. It takes a structure, a force field and simulation settings and produces trajectories, and it runs efficiently on both CPUs and GPUs.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#biochar">Biochar &amp; PFAS</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://www.gromacs.org">gromacs.org</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="plumed">
+        <h3>PLUMED</h3>
+        <p class="glossary-short">An open-source plugin that adds collective variables and enhanced-sampling methods such as OPES and metadynamics to MD programs like GROMACS.</p>
+          <p>PLUMED computes collective variables while a simulation runs and applies biases along them. It can also analyze trajectories after the fact, which is how students first meet it in the training notebooks.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://www.plumed.org">plumed.org</a></li><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track3_PLUMED/plumed_tutorial.ipynb">Training notebook: PLUMED and OPES</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="mlcolvar">
+        <h3>mlcolvar</h3>
+        <p class="glossary-short">A Python library for training machine-learned collective variables, such as Deep-TICA, and exporting them to PLUMED.</p>
+          <p>mlcolvar builds on PyTorch. It trains neural-network collective variables on simulation data and exports them in a form PLUMED can evaluate during a simulation.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://mlcolvar.readthedocs.io">mlcolvar documentation</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="mdanalysis">
+        <h3>MDAnalysis</h3>
+        <p class="glossary-short">A Python library for reading and analyzing simulation trajectories: distances, angles, contacts and much more.</p>
+          <p>MDAnalysis reads trajectories from most MD programs and gives Python access to every atom in every frame. It is the first tool students learn in the lab's MD training track.</p>
+        <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p><ul class="glossary-learn small"><li><a href="https://www.mdanalysis.org">mdanalysis.org</a></li><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track2_MDAnalysis/mdanalysis_intro_student.ipynb">Training notebook: MD analysis with MDAnalysis</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="rdkit">
+        <h3>RDKit</h3>
+        <p class="glossary-short">An open-source cheminformatics toolkit for building and manipulating molecules in Python; Biochar-Simulator uses it to assemble structures.</p>
+          <p>RDKit handles molecular graphs, 3D coordinates, substructure searches and much more. Biochar-Simulator uses it to build biochar molecules and generate their 3D geometry.</p>
+        <p class="small muted">Used in: <a href="research.html#biochar">Biochar &amp; PFAS</a></p><ul class="glossary-learn small"><li><a href="https://github.com/rdkit/rdkit">RDKit on GitHub</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="gaussian">
+        <h3>Gaussian</h3>
+        <p class="glossary-short">A widely used commercial quantum chemistry program; the lab uses it for DFT reaction paths in the catalysis project.</p>
+          <p>Gaussian performs geometry optimizations, transition-state searches, IRC calculations and frequency calculations with many DFT functionals and basis sets. Students learn to read its output files in the Gaussian training track.</p>
+        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a></p><ul class="glossary-learn small"><li><a href="https://gaussian.com">gaussian.com</a></li><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track1_Gaussian/gaussian_python_intro.ipynb">Training notebook: Python for Gaussian output</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="orca">
+        <h3>ORCA</h3>
+        <p class="glossary-short">A quantum chemistry program, free for academic use, that the lab uses for the Mössbauer calculations.</p>
+          <p>ORCA offers a wide range of DFT and wavefunction methods and is especially strong for transition-metal chemistry and spectroscopy, which is why Mössbauer-DFT is built around it.</p>
+        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://www.faccts.de/orca/">ORCA (FACCTs)</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="quantum-espresso">
+        <h3>Quantum ESPRESSO</h3>
+        <p class="glossary-short">An open-source DFT program built for crystals and surfaces, which the lab uses for the CsPbBr₃ band-structure calculations.</p>
+          <p>Quantum ESPRESSO describes electrons with plane waves, which suits periodic systems such as crystals and slabs. It supports spin-orbit coupling, which the Rashba project needs.</p>
+        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://www.quantum-espresso.org">quantum-espresso.org</a></li></ul>
+      </article>
+      <article class="glossary-entry" id="pyprocar">
+        <h3>PyProcar</h3>
+        <p class="glossary-short">A Python tool for analyzing and plotting band structures, including the spin texture that reveals Rashba splitting.</p>
+          <p>PyProcar reads the output of DFT codes such as Quantum ESPRESSO and plots band structures, projected bands and spin textures.</p>
+        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://github.com/romerogroup/pyprocar">PyProcar on GitHub</a></li></ul>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>Layfield Lab, Department of Chemistry, University of St. Thomas, St. Paul, Minnesota</div>
+      <div><a href="mailto:jlayfield@stthomas.edu">jlayfield@stthomas.edu</a> · <a href="https://github.com/layfield-lab">GitHub</a></div>
+    </div>
+  </footer>
+</body>
+</html>

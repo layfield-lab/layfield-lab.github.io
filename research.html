@@ -6,6 +6,8 @@
   <title>Research · Layfield Lab</title>
   <meta name="description" content="The Layfield Lab at the University of St. Thomas uses computational chemistry (quantum chemistry, molecular dynamics and enhanced sampling) with undergraduate researchers.">
   <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/glossary-tips.js" defer></script>
+  <script src="assets/glossary.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -35,6 +37,7 @@
             <label><input type="radio" name="level" value="pchem"> Physical chemistry</label>
           </div>
         </fieldset>
+        <p class="small muted glossary-hint">New to a method? Hover over it for a quick definition, or browse the <a href="glossary.html">glossary</a>.</p>
       </div>
     </section>
 
@@ -56,8 +59,8 @@
             </div>
           </div>
           <dl>
-            <dt>Methods</dt><dd>Molecular dynamics; OPES metadynamics and multithermal sampling; machine-learned collective variables (Deep-TICA)</dd>
-            <dt>Tools</dt><dd>GROMACS, PLUMED, mlcolvar, MDAnalysis, <a href="software.html#fes-explore">fes-explore</a></dd>
+            <dt>Methods</dt><dd><a class="term" href="glossary.html#molecular-dynamics">Molecular dynamics</a>; <a class="term" href="glossary.html#opes">OPES metadynamics</a> and <a class="term" href="glossary.html#opes-multithermal">multithermal sampling</a>; <a class="term" href="glossary.html#ml-cv">machine-learned collective variables (Deep-TICA)</a></dd>
+            <dt>Tools</dt><dd><a class="term" href="glossary.html#gromacs">GROMACS</a>, <a class="term" href="glossary.html#plumed">PLUMED</a>, <a class="term" href="glossary.html#mlcolvar">mlcolvar</a>, <a class="term" href="glossary.html#mdanalysis">MDAnalysis</a>, <a href="software.html#fes-explore">fes-explore</a></dd>
             <dt>Earlier work</dt><dd>β-hairpin folding in decapeptides and histidine-containing peptide catalysts (2020–2022)</dd>
           </dl>
         </div>
@@ -87,8 +90,8 @@
             </div>
           </div>
           <dl>
-            <dt>Methods</dt><dd>Molecular dynamics; enhanced sampling; surface modeling</dd>
-            <dt>Tools</dt><dd>GROMACS, RDKit, <a href="software.html#biochar">biochar</a>, <a href="software.html#biochar-pfas">biochar-pfas</a>, <a href="software.html#gromacs-mcp">gromacs-mcp</a></dd>
+            <dt>Methods</dt><dd><a class="term" href="glossary.html#molecular-dynamics">Molecular dynamics</a>; <a class="term" href="glossary.html#enhanced-sampling">enhanced sampling</a>; <a class="term" href="glossary.html#surface-modeling">surface modeling</a></dd>
+            <dt>Tools</dt><dd><a class="term" href="glossary.html#gromacs">GROMACS</a>, <a class="term" href="glossary.html#rdkit">RDKit</a>, <a href="software.html#biochar">biochar</a>, <a href="software.html#biochar-pfas">biochar-pfas</a>, <a href="software.html#gromacs-mcp">gromacs-mcp</a></dd>
           </dl>
         </div>
       </section>
@@ -103,8 +106,8 @@
             <p class="lv lv-pchem">We compute the reaction pathways for ring-opening polymerization of ε-caprolactone and ε-thionocaprolactone by Al, Y and Bi complexes: monomer binding to the metal, the first transition state and the ring-opened intermediates. Transition states are connected to their minima by intrinsic reaction coordinate calculations, using the ωB97X-D functional with def2 basis sets and implicit solvent. The aim is to explain the differences between metals and point our experimental collaborators in St. Thomas Chemistry toward better catalysts for degradable thiopolyesters.</p>
           </div>
           <dl>
-            <dt>Methods</dt><dd>Density functional theory; transition-state searches; intrinsic reaction coordinates</dd>
-            <dt>Tools</dt><dd>Gaussian, <a href="software.html#pes-builder">pes-builder</a></dd>
+            <dt>Methods</dt><dd><a class="term" href="glossary.html#dft">Density functional theory</a>; <a class="term" href="glossary.html#transition-state">transition-state searches</a>; <a class="term" href="glossary.html#irc">intrinsic reaction coordinates</a></dd>
+            <dt>Tools</dt><dd><a class="term" href="glossary.html#gaussian">Gaussian</a>, <a href="software.html#pes-builder">pes-builder</a></dd>
           </dl>
         </div>
       </section>
@@ -129,8 +132,8 @@
             </div>
           </div>
           <dl>
-            <dt>Methods</dt><dd>Density functional theory; calibration and uncertainty estimates; spin-orbit band structures</dd>
-            <dt>Tools</dt><dd>ORCA, Quantum ESPRESSO, PyProcar, <a href="software.html#mossbauer">Mössbauer-DFT</a></dd>
+            <dt>Methods</dt><dd><a class="term" href="glossary.html#dft">Density functional theory</a>; <a class="term" href="glossary.html#calibration">calibration and uncertainty estimates</a>; <a class="term" href="glossary.html#spin-orbit">spin-orbit band structures</a></dd>
+            <dt>Tools</dt><dd><a class="term" href="glossary.html#orca">ORCA</a>, <a class="term" href="glossary.html#quantum-espresso">Quantum ESPRESSO</a>, <a class="term" href="glossary.html#pyprocar">PyProcar</a>, <a href="software.html#mossbauer">Mössbauer-DFT</a></dd>
           </dl>
         </div>
       </section>
@@ -145,8 +148,8 @@
             <p class="lv lv-pchem">We compute free energies of ion transfer across water/organic interfaces with molecular dynamics and enhanced sampling along collective variables built for interfaces, and use empirical valence bond models where bonds form or break. The aim is to connect phase-transfer catalyst structure, such as alkyl chain length, to the transfer free energy.</p>
           </div>
           <dl>
-            <dt>Methods</dt><dd>Molecular dynamics; empirical valence bond models; interface collective variables</dd>
-            <dt>Tools</dt><dd>GROMACS, PLUMED, <a href="software.html#ion-transfer-cv">ion-transfer-cv</a></dd>
+            <dt>Methods</dt><dd><a class="term" href="glossary.html#molecular-dynamics">Molecular dynamics</a>; <a class="term" href="glossary.html#evb">empirical valence bond models</a>; <a class="term" href="glossary.html#collective-variable">interface collective variables</a></dd>
+            <dt>Tools</dt><dd><a class="term" href="glossary.html#gromacs">GROMACS</a>, <a class="term" href="glossary.html#plumed">PLUMED</a>, <a href="software.html#ion-transfer-cv">ion-transfer-cv</a></dd>
           </dl>
         </div>
       </section>
