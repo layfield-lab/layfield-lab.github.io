@@ -6,6 +6,13 @@
       "terms": [
         {
           "id": "molecular-dynamics",
+          "figure": {
+            "src": "assets/images/glossary/molecular-dynamics.png",
+            "alt": "Three panels show five particles, force arrows on those particles, and slightly updated positions. A return arrow indicates repeating the cycle.",
+            "caption": "One MD step: calculate forces, update velocities and positions, then repeat. Generic particles and exaggerated displacements illustrate the idea; this is not a simulated trajectory.",
+            "width": 1536,
+            "height": 1024
+          },
           "term": "Molecular dynamics (MD)",
           "short": "A simulation that moves every atom forward in tiny time steps using Newton's laws, producing a movie of how molecules move and interact.",
           "long": [
@@ -50,6 +57,13 @@
         },
         {
           "id": "free-energy-surface",
+          "figure": {
+            "src": "assets/images/glossary/free-energy.svg",
+            "alt": "An asymmetric double-well free-energy curve is paired with its Boltzmann probability density. The lower left basin corresponds to a taller probability peak.",
+            "caption": "Illustrative one-dimensional slice: P(s) is proportional to exp[−F(s)/kBT]. Lower free energy means higher probability density at that CV value. A state’s total population is the area under the probability curve across its basin.",
+            "width": 1313,
+            "height": 881
+          },
           "term": "Free-energy surface",
           "short": "A map of free energy along one or two collective variables: valleys are stable states, and the heights of the hills between them set how often the system switches.",
           "long": [
@@ -61,6 +75,13 @@
         },
         {
           "id": "metadynamics",
+          "figure": {
+            "src": "assets/images/glossary/metadynamics.svg",
+            "alt": "Three plots show an original double well, then increasing positive bias in its left basin. The biased curve rises above the original curve and reduces the escape barrier. Black dots mark sampled positions; in the last panel, a dot follows a schematic path from the left basin over the barrier into the right basin.",
+            "caption": "Schematic Gaussian deposition sequence: added bias lifts the visited basin, reducing the barrier to exploring elsewhere. Solid purple is the original free energy F; dotted gray is free energy plus bias, F + V. Black dots mark sampled positions. In the last panel, the dot crosses from the left well to the right well once when the image loads; reduced-motion settings show the endpoint. Its prescribed path and speed are illustrative, not a simulated trajectory or a physical reaction rate.",
+            "width": 1745,
+            "height": 650
+          },
           "term": "Metadynamics",
           "short": "An enhanced-sampling method that keeps adding small energy bumps where the system has already been, gradually filling valleys until it escapes to new states.",
           "long": [
@@ -127,6 +148,13 @@
         },
         {
           "id": "surface-modeling",
+          "figure": {
+            "src": "assets/images/glossary/surface-modeling.png",
+            "alt": "Three porous-carbon slit models compare a reference surface, more oxygen-containing surface sites at the same pore width, and a wider pore with the reference site count.",
+            "caption": "Compare a family of surface models by changing one feature at a time: surface chemistry or pore width. Purple markers symbolize oxygen-containing groups. These are conceptual cutaways, not atomistic structures or microscopy images.",
+            "width": 1536,
+            "height": 1024
+          },
           "term": "Surface modeling",
           "short": "Building atomistic models of a material's surface, such as a biochar sheet with pores and oxygen groups, that a simulation can use.",
           "long": [
@@ -154,6 +182,13 @@
         },
         {
           "id": "transition-state",
+          "figure": {
+            "src": "assets/images/glossary/reaction-path.svg",
+            "alt": "A purple potential-energy profile connects a reactant minimum to a lower-energy product minimum through a transition state. Green IRC points and arrowheads lie directly on that same curve, descending from the transition state in both directions. A vertical arrow marks the forward barrier.",
+            "caption": "IRC points lie on the calculated potential-energy surface. Starting just off the transition state along its imaginary mode, the calculation updates the downhill direction using the local gradient in mass-weighted coordinates. Here, the green points and arrows follow the purple energy profile E(s) toward both connected minima. The horizontal axis is distance along that path, not time or a fixed bond coordinate. The product minimum is lower than the reactant minimum in this illustrative exothermic profile. This schematic illustrates the method; it is not a calculated reaction or a finite-temperature trajectory.",
+            "width": 1313,
+            "height": 794
+          },
           "term": "Transition state and transition-state searches",
           "short": "The highest-energy point on the lowest-energy path from reactants to products; its height above the reactants sets the reaction barrier.",
           "long": [
@@ -187,6 +222,13 @@
         },
         {
           "id": "calibration",
+          "figure": {
+            "src": "assets/images/glossary/prediction-interval.svg",
+            "alt": "Synthetic calibration points surround a fitted line. A narrow confidence band for the mean is nested inside a wider prediction band; a green error bar marks one new prediction.",
+            "caption": "Synthetic calibration example. The 95% prediction interval for one new measurement is wider than the confidence interval for the mean because it includes residual scatter as well as uncertainty in the fitted line. These pointwise intervals assume a linear model with independent, normal, constant-variance errors.",
+            "width": 1313,
+            "height": 809
+          },
           "term": "Calibration and prediction intervals",
           "short": "Fitting computed values to measured ones for a reference set, so new predictions can be corrected and reported as a range the true value likely falls in.",
           "long": [

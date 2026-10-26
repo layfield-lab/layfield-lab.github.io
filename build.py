@@ -98,10 +98,20 @@ def glossary_body(data: dict) -> str:
             learn = "".join(f'<li><a href="{u}">{escape(lbl)}</a></li>' for lbl, u in t["learn"])
             meta = f'<p class="small muted">Used in: {used}</p>' if used else ""
             more = f'<ul class="glossary-learn small">{learn}</ul>' if learn else ""
+            figure = ""
+            if image := t.get("figure"):
+                src = escape(image["src"], quote=True)
+                alt = escape(image["alt"], quote=True)
+                caption = escape(image["caption"])
+                figure = f'''
+        <figure class="glossary-figure">
+          <a href="{src}" aria-label="View larger illustration: {escape(t['term'], quote=True)}"><img src="{src}" alt="{alt}" loading="lazy" decoding="async" width="{image['width']}" height="{image['height']}"></a>
+          <figcaption>{caption} <a href="{src}">View larger image</a></figcaption>
+        </figure>'''
             parts.append(f"""      <article class="glossary-entry" id="{t['id']}">
         <h3>{escape(t['term'])}</h3>
         <p class="glossary-short">{escape(t['short'])}</p>
-{paras}
+{paras}{figure}
         {meta}{more}
       </article>""")
     parts.append("    </div>")

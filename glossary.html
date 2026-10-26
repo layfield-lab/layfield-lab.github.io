@@ -38,6 +38,10 @@
         <p class="glossary-short">A simulation that moves every atom forward in tiny time steps using Newton&#x27;s laws, producing a movie of how molecules move and interact.</p>
           <p>Molecular dynamics treats atoms as balls connected by springs. At each step the computer calculates the force on every atom from a <a href="#force-field">force field</a>, moves the atoms a tiny amount, and repeats. A typical time step is about two femtoseconds (2 × 10⁻¹⁵ s), so a simulation needs millions of steps to reach a microsecond.</p>
           <p>MD shows how molecules move, fold and bind, usually with thousands of explicit water molecules around them. Its main limit is time: events that happen rarely, such as a peptide folding or a molecule leaving a surface, may never occur in a plain simulation. That is what <a href="#enhanced-sampling">enhanced sampling</a> is for. Standard MD also cannot form or break chemical bonds; for that we use <a href="#dft">quantum chemistry</a> or <a href="#evb">empirical valence bond</a> models.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/molecular-dynamics.png" aria-label="View larger illustration: Molecular dynamics (MD)"><img src="assets/images/glossary/molecular-dynamics.png" alt="Three panels show five particles, force arrows on those particles, and slightly updated positions. A return arrow indicates repeating the cycle." loading="lazy" decoding="async" width="1536" height="1024"></a>
+          <figcaption>One MD step: calculate forces, update velocities and positions, then repeat. Generic particles and exaggerated displacements illustrate the idea; this is not a simulated trajectory. <a href="assets/images/glossary/molecular-dynamics.png">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#biochar">Biochar &amp; PFAS</a>, <a href="research.html#interfaces">Interfaces</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track2_MDAnalysis/mdanalysis_intro_student.ipynb">Training notebook: MD analysis with MDAnalysis</a></li></ul>
       </article>
       <article class="glossary-entry" id="force-field">
@@ -66,6 +70,10 @@
         <p class="glossary-short">A map of free energy along one or two collective variables: valleys are stable states, and the heights of the hills between them set how often the system switches.</p>
           <p>A free-energy surface comes from how often a system visits each value of its collective variables: F = −k<sub>B</sub>T ln P, where P is the probability. A state the system visits often sits in a deep valley.</p>
           <p>Comparing valleys gives populations, for example the fraction of time a peptide spends as a hairpin. Comparing a valley with the hill next to it gives the barrier that controls how fast the system changes.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/free-energy.svg" aria-label="View larger illustration: Free-energy surface"><img src="assets/images/glossary/free-energy.svg" alt="An asymmetric double-well free-energy curve is paired with its Boltzmann probability density. The lower left basin corresponds to a taller probability peak." loading="lazy" decoding="async" width="1313" height="881"></a>
+          <figcaption>Illustrative one-dimensional slice: P(s) is proportional to exp[−F(s)/kBT]. Lower free energy means higher probability density at that CV value. A state’s total population is the area under the probability curve across its basin. <a href="assets/images/glossary/free-energy.svg">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a>, <a href="research.html#interfaces">Interfaces</a></p>
       </article>
       <article class="glossary-entry" id="metadynamics">
@@ -73,6 +81,10 @@
         <p class="glossary-short">An enhanced-sampling method that keeps adding small energy bumps where the system has already been, gradually filling valleys until it escapes to new states.</p>
           <p>Metadynamics deposits small Gaussian hills of bias energy at the current value of the collective variables. Over time the hills fill the free-energy valleys, pushing the system to explore states it would rarely visit. The accumulated bias also gives an estimate of the free-energy surface.</p>
           <p>Metadynamics introduced the idea of building a bias on the fly. <a href="#opes">OPES</a> keeps that idea but builds the bias differently.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/metadynamics.svg" aria-label="View larger illustration: Metadynamics"><img src="assets/images/glossary/metadynamics.svg" alt="Three plots show an original double well, then increasing positive bias in its left basin. The biased curve rises above the original curve and reduces the escape barrier. Black dots mark sampled positions; in the last panel, a dot follows a schematic path from the left basin over the barrier into the right basin." loading="lazy" decoding="async" width="1745" height="650"></a>
+          <figcaption>Schematic Gaussian deposition sequence: added bias lifts the visited basin, reducing the barrier to exploring elsewhere. Solid purple is the original free energy F; dotted gray is free energy plus bias, F + V. Black dots mark sampled positions. In the last panel, the dot crosses from the left well to the right well once when the image loads; reduced-motion settings show the endpoint. Its prescribed path and speed are illustrative, not a simulated trajectory or a physical reaction rate. <a href="assets/images/glossary/metadynamics.svg">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#peptides">Peptide folding</a></p>
       </article>
       <article class="glossary-entry" id="opes">
@@ -115,6 +127,10 @@
         <p class="glossary-short">Building atomistic models of a material&#x27;s surface, such as a biochar sheet with pores and oxygen groups, that a simulation can use.</p>
           <p>Real biochar is disordered, so there is no single crystal structure to start from. The lab builds model surfaces from properties that can be measured, such as H/C and O/C ratios, functional groups and pore widths, using <a href="software.html#biochar">Biochar-Simulator</a>.</p>
           <p>Building a family of surfaces lets us change one property at a time, such as oxygen content or pore size, and see how it affects PFAS binding.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/surface-modeling.png" aria-label="View larger illustration: Surface modeling"><img src="assets/images/glossary/surface-modeling.png" alt="Three porous-carbon slit models compare a reference surface, more oxygen-containing surface sites at the same pore width, and a wider pore with the reference site count." loading="lazy" decoding="async" width="1536" height="1024"></a>
+          <figcaption>Compare a family of surface models by changing one feature at a time: surface chemistry or pore width. Purple markers symbolize oxygen-containing groups. These are conceptual cutaways, not atomistic structures or microscopy images. <a href="assets/images/glossary/surface-modeling.png">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#biochar">Biochar &amp; PFAS</a></p>
       </article>
       <h2 class="glossary-group">Quantum chemistry</h2>
@@ -130,6 +146,10 @@
         <p class="glossary-short">The highest-energy point on the lowest-energy path from reactants to products; its height above the reactants sets the reaction barrier.</p>
           <p>A transition state is a saddle point on the potential energy surface: a maximum along the reaction path and a minimum in every other direction. A transition-state search uses an optimizer that climbs toward that saddle point instead of downhill.</p>
           <p>A true transition state has exactly one imaginary vibrational frequency, the motion that carries it toward reactants or products. Comparing barrier heights for different catalysts shows which should react fastest.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/reaction-path.svg" aria-label="View larger illustration: Transition state and transition-state searches"><img src="assets/images/glossary/reaction-path.svg" alt="A purple potential-energy profile connects a reactant minimum to a lower-energy product minimum through a transition state. Green IRC points and arrowheads lie directly on that same curve, descending from the transition state in both directions. A vertical arrow marks the forward barrier." loading="lazy" decoding="async" width="1313" height="794"></a>
+          <figcaption>IRC points lie on the calculated potential-energy surface. Starting just off the transition state along its imaginary mode, the calculation updates the downhill direction using the local gradient in mass-weighted coordinates. Here, the green points and arrows follow the purple energy profile E(s) toward both connected minima. The horizontal axis is distance along that path, not time or a fixed bond coordinate. The product minimum is lower than the reactant minimum in this illustrative exothermic profile. This schematic illustrates the method; it is not a calculated reaction or a finite-temperature trajectory. <a href="assets/images/glossary/reaction-path.svg">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a></p>
       </article>
       <article class="glossary-entry" id="irc">
@@ -151,6 +171,10 @@
         <p class="glossary-short">Fitting computed values to measured ones for a reference set, so new predictions can be corrected and reported as a range the true value likely falls in.</p>
           <p>Computed spectroscopic parameters are not directly comparable with experiment; for example, a Mössbauer isomer shift is computed from the electron density at the iron nucleus and must be related to measured shifts. Calibrating against a set of iron complexes with known values gives that relationship.</p>
           <p>The scatter of the reference set around the calibration line also tells you how much to trust a new prediction. A prediction interval turns that scatter into a range, which is more honest than a single number.</p>
+        <figure class="glossary-figure">
+          <a href="assets/images/glossary/prediction-interval.svg" aria-label="View larger illustration: Calibration and prediction intervals"><img src="assets/images/glossary/prediction-interval.svg" alt="Synthetic calibration points surround a fitted line. A narrow confidence band for the mean is nested inside a wider prediction band; a green error bar marks one new prediction." loading="lazy" decoding="async" width="1313" height="809"></a>
+          <figcaption>Synthetic calibration example. The 95% prediction interval for one new measurement is wider than the confidence interval for the mean because it includes residual scatter as well as uncertainty in the fitted line. These pointwise intervals assume a linear model with independent, normal, constant-variance errors. <a href="assets/images/glossary/prediction-interval.svg">View larger image</a></figcaption>
+        </figure>
         <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p>
       </article>
       <h2 class="glossary-group">Software we use</h2>

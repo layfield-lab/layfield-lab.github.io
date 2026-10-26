@@ -181,3 +181,11 @@ a.term:hover, a.term:focus-visible { color: var(--accent); }
 .glossary-entry:target h3 { color: var(--accent); }
 .glossary-short { font-weight: 600; }
 .glossary-learn { margin: 4px 0 0; padding-left: 18px; }
+
+/* Explanatory figures: captions remain readable text; image links allow zooming. */
+.glossary-figure { margin: 24px 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.glossary-figure > a { display: block; }
+.glossary-figure img { display: block; width: 100%; height: auto; }
+.glossary-figure figcaption { padding: 12px 16px; border-top: 1px solid var(--line); background: var(--bg-alt); font-size: 14px; line-height: 1.6; }
+.glossary-figure figcaption a { white-space: nowrap; }
+.glossary-figure > a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
