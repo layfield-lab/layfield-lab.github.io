@@ -152,8 +152,9 @@ details summary { cursor: pointer; font-weight: 600; }
 
 /* Research-page reading level (assets/levels.js). Without JS the organic-chemistry text shows. */
 .level-picker { margin: 20px 0 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-alt); max-width: 62ch; }
-.level-picker legend { padding: 0 6px; margin-left: -6px; font-size: 14px; font-weight: 600; }
-.level-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+/* Floating the legend keeps it inside the box instead of on the top border */
+.level-picker legend { float: left; width: 100%; padding: 0; margin: 0 0 10px; font-size: 14px; font-weight: 600; }
+.level-options { clear: both; display: flex; flex-wrap: wrap; gap: 8px; }
 .level-options label { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font-size: 15px; cursor: pointer; }
 .level-options label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 .level-options input { accent-color: var(--accent); margin: 0; }
