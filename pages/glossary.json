@@ -177,7 +177,7 @@
             "DFT solves an approximate form of the Schrödinger equation in which the energy is written as a function of the electron density. Unlike a force field, it describes electrons explicitly, so it can follow bonds forming and breaking, predict spectra, and handle metals.",
             "The approximation lives in the choice of functional, and the accuracy also depends on the basis set used to describe the electrons. For the catalysis project we use the ωB97X-D functional with def2 basis sets and an implicit solvent model that treats the solvent as a continuous medium. DFT is far more expensive than molecular dynamics, so it is usually applied to a few hundred atoms at most."
           ],
-          "used_in": [["Catalysis", "research.html#catalysis"], ["Spectroscopy", "research.html#spectroscopy"]],
+          "used_in": [["Catalysis", "research.html#catalysis"]],
           "learn": [["Training notebook: Python for Gaussian output", "https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track1_Gaussian/gaussian_python_intro.ipynb"]]
         },
         {
@@ -217,7 +217,7 @@
             "A band structure shows the energies electrons can have in a crystal as a function of their momentum. Its shape determines whether a material conducts and what light it absorbs.",
             "Near heavy atoms such as lead, an electron's spin couples to its orbital motion. When the structure also lacks inversion symmetry, as at a surface, this spin-orbit coupling can split each band into two with opposite spin, an effect called Rashba splitting. Calculating it requires DFT that includes spin-orbit coupling explicitly."
           ],
-          "used_in": [["Spectroscopy", "research.html#spectroscopy"]],
+          "used_in": [],
           "learn": []
         },
         {
@@ -235,7 +235,7 @@
             "Computed spectroscopic parameters are not directly comparable with experiment; for example, a Mössbauer isomer shift is computed from the electron density at the iron nucleus and must be related to measured shifts. Calibrating against a set of iron complexes with known values gives that relationship.",
             "The scatter of the reference set around the calibration line also tells you how much to trust a new prediction. A prediction interval turns that scatter into a range, which is more honest than a single number."
           ],
-          "used_in": [["Spectroscopy", "research.html#spectroscopy"]],
+          "used_in": [],
           "learn": []
         }
       ]
@@ -294,17 +294,17 @@
         {
           "id": "orca",
           "term": "ORCA",
-          "short": "A quantum chemistry program, free for academic use, that the lab uses for the Mössbauer calculations.",
-          "long": ["ORCA offers a wide range of DFT and wavefunction methods and is especially strong for transition-metal chemistry and spectroscopy, which is why Mössbauer-DFT is built around it."],
-          "used_in": [["Spectroscopy", "research.html#spectroscopy"]],
+          "short": "A quantum chemistry program, free for academic use, strong on transition-metal chemistry and spectroscopy.",
+          "long": ["ORCA offers a wide range of DFT and wavefunction methods and is especially strong for transition-metal chemistry and spectroscopy."],
+          "used_in": [],
           "learn": [["ORCA (FACCTs)", "https://www.faccts.de/orca/"]]
         },
         {
           "id": "quantum-espresso",
           "term": "Quantum ESPRESSO",
-          "short": "An open-source DFT program built for crystals and surfaces, which the lab uses for the CsPbBr₃ band-structure calculations.",
-          "long": ["Quantum ESPRESSO describes electrons with plane waves, which suits periodic systems such as crystals and slabs. It supports spin-orbit coupling, which the Rashba project needs."],
-          "used_in": [["Spectroscopy", "research.html#spectroscopy"]],
+          "short": "An open-source DFT program built for crystals and surfaces, with support for spin-orbit band structures.",
+          "long": ["Quantum ESPRESSO describes electrons with plane waves, which suits periodic systems such as crystals and slabs. It supports spin-orbit coupling."],
+          "used_in": [],
           "learn": [["quantum-espresso.org", "https://www.quantum-espresso.org"]]
         },
         {
@@ -312,7 +312,7 @@
           "term": "PyProcar",
           "short": "A Python tool for analyzing and plotting band structures, including the spin texture that reveals Rashba splitting.",
           "long": ["PyProcar reads the output of DFT codes such as Quantum ESPRESSO and plots band structures, projected bands and spin textures."],
-          "used_in": [["Spectroscopy", "research.html#spectroscopy"]],
+          "used_in": [],
           "learn": [["PyProcar on GitHub", "https://github.com/romerogroup/pyprocar"]]
         }
       ]

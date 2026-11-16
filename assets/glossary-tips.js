@@ -94,11 +94,11 @@ window.GLOSSARY_TIPS = {
  },
  "orca": {
   "term": "ORCA",
-  "short": "A quantum chemistry program, free for academic use, that the lab uses for the Mössbauer calculations."
+  "short": "A quantum chemistry program, free for academic use, strong on transition-metal chemistry and spectroscopy."
  },
  "quantum-espresso": {
   "term": "Quantum ESPRESSO",
-  "short": "An open-source DFT program built for crystals and surfaces, which the lab uses for the CsPbBr₃ band-structure calculations."
+  "short": "An open-source DFT program built for crystals and surfaces, with support for spin-orbit band structures."
  },
  "pyprocar": {
   "term": "PyProcar",

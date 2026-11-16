@@ -139,7 +139,7 @@
         <p class="glossary-short">A quantum-mechanics method that computes a molecule&#x27;s energy and structure from its electron density; the workhorse of computational chemistry.</p>
           <p>DFT solves an approximate form of the Schrödinger equation in which the energy is written as a function of the electron density. Unlike a force field, it describes electrons explicitly, so it can follow bonds forming and breaking, predict spectra, and handle metals.</p>
           <p>The approximation lives in the choice of functional, and the accuracy also depends on the basis set used to describe the electrons. For the catalysis project we use the ωB97X-D functional with def2 basis sets and an implicit solvent model that treats the solvent as a continuous medium. DFT is far more expensive than molecular dynamics, so it is usually applied to a few hundred atoms at most.</p>
-        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a>, <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track1_Gaussian/gaussian_python_intro.ipynb">Training notebook: Python for Gaussian output</a></li></ul>
+        <p class="small muted">Used in: <a href="research.html#catalysis">Catalysis</a></p><ul class="glossary-learn small"><li><a href="https://github.com/layfield-lab/chem-lab-tutorials/blob/main/Track1_Gaussian/gaussian_python_intro.ipynb">Training notebook: Python for Gaussian output</a></li></ul>
       </article>
       <article class="glossary-entry" id="transition-state">
         <h3>Transition state and transition-state searches</h3>
@@ -164,7 +164,7 @@
         <p class="glossary-short">Spin-orbit coupling links an electron&#x27;s spin to its motion near heavy atoms; in a crystal it can split the energy bands that a band structure plots.</p>
           <p>A band structure shows the energies electrons can have in a crystal as a function of their momentum. Its shape determines whether a material conducts and what light it absorbs.</p>
           <p>Near heavy atoms such as lead, an electron's spin couples to its orbital motion. When the structure also lacks inversion symmetry, as at a surface, this spin-orbit coupling can split each band into two with opposite spin, an effect called Rashba splitting. Calculating it requires DFT that includes spin-orbit coupling explicitly.</p>
-        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p>
+        
       </article>
       <article class="glossary-entry" id="calibration">
         <h3>Calibration and prediction intervals</h3>
@@ -175,7 +175,7 @@
           <a href="assets/images/glossary/prediction-interval.svg" aria-label="View larger illustration: Calibration and prediction intervals"><img src="assets/images/glossary/prediction-interval.svg" alt="Synthetic calibration points surround a fitted line. A narrow confidence band for the mean is nested inside a wider prediction band; a green error bar marks one new prediction." loading="lazy" decoding="async" width="1313" height="809"></a>
           <figcaption>Synthetic calibration example. The 95% prediction interval for one new measurement is wider than the confidence interval for the mean because it includes residual scatter as well as uncertainty in the fitted line. These pointwise intervals assume a linear model with independent, normal, constant-variance errors. <a href="assets/images/glossary/prediction-interval.svg">View larger image</a></figcaption>
         </figure>
-        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p>
+        
       </article>
       <h2 class="glossary-group">Software we use</h2>
       <article class="glossary-entry" id="gromacs">
@@ -216,21 +216,21 @@
       </article>
       <article class="glossary-entry" id="orca">
         <h3>ORCA</h3>
-        <p class="glossary-short">A quantum chemistry program, free for academic use, that the lab uses for the Mössbauer calculations.</p>
-          <p>ORCA offers a wide range of DFT and wavefunction methods and is especially strong for transition-metal chemistry and spectroscopy, which is why Mössbauer-DFT is built around it.</p>
-        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://www.faccts.de/orca/">ORCA (FACCTs)</a></li></ul>
+        <p class="glossary-short">A quantum chemistry program, free for academic use, strong on transition-metal chemistry and spectroscopy.</p>
+          <p>ORCA offers a wide range of DFT and wavefunction methods and is especially strong for transition-metal chemistry and spectroscopy.</p>
+        <ul class="glossary-learn small"><li><a href="https://www.faccts.de/orca/">ORCA (FACCTs)</a></li></ul>
       </article>
       <article class="glossary-entry" id="quantum-espresso">
         <h3>Quantum ESPRESSO</h3>
-        <p class="glossary-short">An open-source DFT program built for crystals and surfaces, which the lab uses for the CsPbBr₃ band-structure calculations.</p>
-          <p>Quantum ESPRESSO describes electrons with plane waves, which suits periodic systems such as crystals and slabs. It supports spin-orbit coupling, which the Rashba project needs.</p>
-        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://www.quantum-espresso.org">quantum-espresso.org</a></li></ul>
+        <p class="glossary-short">An open-source DFT program built for crystals and surfaces, with support for spin-orbit band structures.</p>
+          <p>Quantum ESPRESSO describes electrons with plane waves, which suits periodic systems such as crystals and slabs. It supports spin-orbit coupling.</p>
+        <ul class="glossary-learn small"><li><a href="https://www.quantum-espresso.org">quantum-espresso.org</a></li></ul>
       </article>
       <article class="glossary-entry" id="pyprocar">
         <h3>PyProcar</h3>
         <p class="glossary-short">A Python tool for analyzing and plotting band structures, including the spin texture that reveals Rashba splitting.</p>
           <p>PyProcar reads the output of DFT codes such as Quantum ESPRESSO and plots band structures, projected bands and spin textures.</p>
-        <p class="small muted">Used in: <a href="research.html#spectroscopy">Spectroscopy</a></p><ul class="glossary-learn small"><li><a href="https://github.com/romerogroup/pyprocar">PyProcar on GitHub</a></li></ul>
+        <ul class="glossary-learn small"><li><a href="https://github.com/romerogroup/pyprocar">PyProcar on GitHub</a></li></ul>
       </article>
     </div>
   </main>
